@@ -1,0 +1,237 @@
+
+
+
+{
+        "$schema": "https://vega.github.io/schema/vega/v3.json",
+        "width": 1881.0,
+        "height": 614.0,
+        "padding": 0,
+        "autosize": "none",
+
+        "signals": [
+          { "name": "cx", "update": "width / 2" },
+          { "name": "cy", "update": "height / 2" },
+          {
+            "description": "State variable for active node fix status.",
+            "name": "fix", "value": 0,
+            "on": [
+              {
+                "events": "symbol:mouseout[!event.buttons], window:mouseup",
+                "update": "0"
+              },
+              {
+                "events": "symbol:mouseover",
+                "update": "fix || 1"
+              },
+              {
+                "events": "[symbol:mousedown, window:mouseup] > window:mousemove!",
+                "update": "2", "force": true
+              }
+            ]
+          }
+        ],
+
+        "data": [
+          {
+            "name": "node-data",
+            "values": [
+            {"rule": "add_chr", "fx": 931.0, "fy": 522.0}, 
+            {"rule": "DMR_calling_Defiant", "fx": 931.0, "fy": 594.0}, 
+            {"rule": "bismark_mapping_bwt1", "fx": 181.0, "fy": 90.0}, 
+            {"rule": "bismark_mapping_bwt2", "fx": 429.0, "fy": 90.0}, 
+            {"rule": "bsmap", "fx": 688.0, "fy": 90.0}, 
+            {"rule": "bsseeker2", "fx": 931.0, "fy": 90.0}, 
+            {"rule": "bwameth", "fx": 1145.0, "fy": 90.0},
+            {"rule": "fastqc_r1", "fx": 1145.0, "fy": 10.0}, 
+            {"rule": "fastqc_r1_trim", "fx": 1723.0, "fy": 45.0},
+            {"rule": "fastqc_r2", "fx": 1300.0, "fy": 10.0}, 
+            {"rule": "fastqc_r2_trim", "fx": 1761.0, "fy": 65.0}, 
+            {"rule": "gem3", "fx": 1382.0, "fy": 90.0}, 
+            {"rule": "gsnap", "fx": 1607.0, "fy": 90.0}, 
+            {"rule": "methyldackel", "fx": 931.0, "fy": 450.0},
+            {"rule": "qualimap_bamqc_dedupl", "fx": 1275.0, "fy": 522.0}, 
+            {"rule": "samtools_select_chr", "fx": 931.0, "fy": 378.0}, 
+            {"rule": "sambamba", "fx": 931.0, "fy": 234.0}, 
+            {"rule": "samtools_sort_bismark_bwt1", "fx": 181.0, "fy": 162.0}, 
+            {"rule": "samtools_sort_bismark_bwt2", "fx": 429.0, "fy": 162.0}, 
+            {"rule": "samtools_sort_bsmap", "fx": 688.0, "fy": 162.0}, 
+            {"rule": "samtools_sort_bsseeker2", "fx": 931.0, "fy": 162.0}, 
+            {"rule": "samtools_sort_bwameth", "fx": 1145.0, "fy": 162.0}, 
+            {"rule": "samtools_sort_dedupl_qualimap", "fx": 1275.0, "fy": 450.0}, 
+            {"rule": "samtools_sort_samb_coord", "fx": 931.0, "fy": 306.0}, 
+            {"rule": "samtools_sort_gem3", "fx": 1382.0, "fy": 162.0}, 
+            {"rule": "samtools_sort_gsnap", "fx": 1607.0, "fy": 162.0}, 
+            {"rule": "trim_galore_pe", "fx": 931.0, "fy": 18.0}]
+          },
+          {
+            "name": "link-data",
+            "values": [
+            {"target": 0, "source": 1, "value": 1},
+            {"target": 2, "source": 17, "value": 1}, 
+            {"target": 3, "source": 18, "value": 1}, 
+            {"target": 4, "source": 19, "value": 1},  
+            {"target": 5, "source": 20, "value": 1}, 
+            {"target": 6, "source": 21, "value": 1}, 
+            {"target": 11, "source": 24, "value": 1},  
+            {"target": 12, "source": 25, "value": 1},  
+            {"target": 13, "source": 0, "value": 1},  
+            {"target": 15, "source": 13, "value": 1}, 
+            {"target": 15, "source": 22, "value": 1},  
+            {"target": 16, "source": 23, "value": 1},  
+            {"target": 17, "source": 16, "value": 1}, 
+            {"target": 18, "source": 16, "value": 1},  
+            {"target": 19, "source": 16, "value": 1}, 
+            {"target": 20, "source": 16, "value": 1},  
+            {"target": 21, "source": 16, "value": 1},  
+            {"target": 22, "source": 14, "value": 1}, 
+            {"target": 23, "source": 15, "value": 1},  
+            {"target": 24, "source": 16, "value": 1}, 
+            {"target": 25, "source": 16, "value": 1},  
+            {"target": 26, "source": 8, "value": 1}, 
+            {"target": 26, "source": 10, "value": 1}, 
+            {"target": 26, "source": 3, "value": 1}, 
+            {"target": 26, "source": 2, "value": 1}, 
+            {"target": 26, "source": 6, "value": 1}, 
+            {"target": 26, "source": 11, "value": 1}, 
+            {"target": 26, "source": 5, "value": 1}, 
+            {"target": 26, "source": 4, "value": 1}, 
+            {"target": 26, "source": 12, "value": 1}]
+          }
+        ],
+
+  "scales": [
+
+    {"name": "color", "type": "ordinal", "range": {"scheme": "category20b"}},
+
+    {"name": "x", "type": "linear"},
+
+    {"name": "y", "type": "linear"}
+
+  ],
+
+  "marks": [
+
+    {
+
+      "name": "nodes",
+
+      "type": "symbol",
+
+      "zindex": 1,
+
+      "from": {"data": "node-data"},
+
+      "encode": {
+
+        "enter": {
+
+          "fill": {"scale": "color", "field": "rule"},
+
+          "size": {"value": 400},
+
+          "strokeWidth": {"value": 1},
+
+          "stroke": {"value": "black"},
+
+          "x": {"field": "fx", "scale": "x"},
+
+          "y": {"field": "fy", "scale": "y"}
+
+        }
+
+      },
+
+      "transform": [
+
+        {
+
+          "type": "force",
+
+          "iterations": 1,
+
+          "static": true,
+
+          "forces": [{"force": "link", "links": "link-data", "distance": 25}]
+
+        }
+
+      ]
+
+    },
+
+    {
+
+      "name": "labels",
+
+      "type": "text",
+
+      "zindex": 2,
+
+      "from": {"data": "node-data"},
+
+      "encode": {
+
+        "enter": {
+
+          "fill": {"value": "black"},
+
+          "fontSize": {"value": 13},
+
+          "fontWeight": {"value": "bold"},
+
+          "text": {"field": "rule"},
+
+          "x": {"field": "fx", "scale": "x"},
+
+          "y": {"field": "fy", "scale": "y"},
+
+          "dx": {"value": 15},
+
+          "dy": {"value": 0}
+
+        }
+
+      }
+
+    },
+
+    {
+
+      "type": "path",
+
+      "from": {"data": "link-data"},
+
+      "interactive": false,
+
+      "encode": {
+
+        "update": {"stroke": {"value": "#000"}, "strokeWidth": {"value": 1.5}}
+
+      },
+
+      "transform": [
+
+        {
+
+          "type": "linkpath",
+
+          "shape": "line",
+
+          "sourceX": "datum.source.x",
+
+          "sourceY": "datum.source.y",
+
+          "targetX": "datum.target.x",
+
+          "targetY": "datum.target.y"
+
+        }
+
+      ]
+
+    }
+
+  ]
+
+}
+

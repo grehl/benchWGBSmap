@@ -1,0 +1,24 @@
+
+
+units: units.tsv
+
+workingdir: "/scratch/user/username/benchmarkWGBS/real_data/"
+
+ref:
+  soy:
+    dir: "/scratch/user/username/genomes/Glycine_max/ref/Williams82_v2.1.43"
+    dirbwt2: "/scratch/user/username/genomes/Glycine_max/ref/Williams82_v2.1.43"
+    dirbwt1: "/scratch/user/username/benchmarkWGBS/data/genomes/glycineMaxV2"
+    dirbwameth: "/scratch/user/username/benchmarkWGBS/data/genomes/glycineMaxV2/Glycine_max.Glycine_max_v2.0.dna.toplevel.fa"
+    dirgem3: "/scratch/user/username/benchmarkWGBS/data/genomes/glycineMaxV2/Glycine_max.Glycine_max_v2.0.dna.toplevel.gem"
+    dirbsseeker2: "/scratch/user/username/benchmarkWGBS/data/genomes/glycineMaxV2/Glycine_max.Glycine_max_v2.0.dna.toplevel.fa"
+    dirbsmap: "/scratch/user/username/benchmarkWGBS/data/genomes/glycineMaxV2/Glycine_max.Glycine_max_v2.0.dna.toplevel.fa"
+    dirgsnap1: "/scratch/user/username/benchmarkWGBS/data/genomes/"
+    dirgsnap2: "glycineMaxV2/Glycine_max.Glycine_max_v2.0.dna.toplevel.gmap.index/"
+    genome: "/scratch/user/username/genomes/Glycine_max/ref/Williams82_v2.1.43/Glycine_max.Glycine_max_v2.1.dna.toplevel.fa.gz"
+    annotation: "/scratch/user/username/genomes/Glycine_max/annotation/Williams82_v2.1.43/Glycine_max.Glycine_max_v2.1.43.gtf.gz"
+    version: "Williams82_v2.1.43"
+
+parameters:
+  trim_galore:
+    _params1: "-q 20 --clip_r2 7 --clip_r1 7 --three_prime_clip_R1 3 --three_prime_clip_R2 3"

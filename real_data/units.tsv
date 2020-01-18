@@ -1,0 +1,5 @@
+unit	sample	fq1	fq2	species	version1
+HiSeq2000	SRR5044695	SRR5044695_1.fastq	SRR5044695_2.fastq	soy	Williams82_v2.1.43
+HiSeq2000	SRR5044696	SRR5044696_1.fastq	SRR5044696_2.fastq	soy	Williams82_v2.1.43
+HiSeq2000	SRR5044699	SRR5044699_1.fastq	SRR5044699_2.fastq	soy	Williams82_v2.1.43
+HiSeq2000	SRR5044700	SRR5044700_1.fastq	SRR5044700_2.fastq	soy	Williams82_v2.1.43
