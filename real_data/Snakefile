@@ -1,0 +1,99 @@
+
+
+import pandas as pd
+configfile: "config.yaml"
+
+units = pd.read_table(config["units"], dtype=str).set_index(["sample"], drop=False)
+
+
+
+rule all:
+	input:
+		expand("results/quality/fastqc/pretrim/{units.species}/{units.sample}/{units.sample}_1_fastqc.html", units=units.itertuples()),
+		expand("results/quality/fastqc/pretrim/{units.species}/{units.sample}/{units.sample}_2_fastqc.html", units=units.itertuples()),
+		expand("results/trim/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_1_val_1.fq", units=units.itertuples()),
+		expand("results/quality/fastqc/aftertrim/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_1_val_1_fastqc.html", units=units.itertuples()),
+		expand("results/quality/fastqc/aftertrim/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_2_val_2_fastqc.html", units=units.itertuples()),
+		expand("results/mapping/bismark_bwt2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_1_val_1_bismark_bt2_pe.bam", units=units.itertuples()),
+		expand("results/mapping/bismark_bwt1/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_1_val_1_bismark_pe.bam", units=units.itertuples()),
+		expand("results/mapping/bwameth/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}.sam", units=units.itertuples()),
+		expand("results/mapping/gem3/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}.sam", units=units.itertuples()),
+		expand("results/mapping/bsseeker2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}.sam", units=units.itertuples()),
+		expand("results/mapping/bsmap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}.sam", units=units.itertuples()),
+		expand("results/mapping/gsnap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}.sam", units=units.itertuples()),
+		expand("results/sortedsam/bismark_bwt1/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sort_name.bam", units=units.itertuples()),
+		expand("results/sortedsam/bismark_bwt2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sort_name.bam", units=units.itertuples()),
+		expand("results/sortedsam/gem3/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sort_name.bam", units=units.itertuples()),
+		expand("results/sortedsam/bsseeker2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sort_name.bam", units=units.itertuples()),
+		expand("results/sortedsam/gsnap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sort_name.bam", units=units.itertuples()),
+		expand("results/sortedsam/bsmap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sort_name.bam", units=units.itertuples()),
+		expand("results/sortedsam/bwameth/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sort_name.bam", units=units.itertuples()),
+		expand("results/deduplication/bwameth/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sambamba_dedup.bam", units=units.itertuples()),
+		expand("results/deduplication/bsmap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sambamba_dedup.bam", units=units.itertuples()),
+		expand("results/deduplication/gsnap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sambamba_dedup.bam", units=units.itertuples()),
+		expand("results/deduplication/bsseeker2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sambamba_dedup.bam", units=units.itertuples()),
+		expand("results/deduplication/gem3/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sambamba_dedup.bam", units=units.itertuples()),
+		expand("results/deduplication/bismark_bwt2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sambamba_dedup.bam", units=units.itertuples()),
+		expand("results/deduplication/bismark_bwt1/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sambamba_dedup.bam", units=units.itertuples()),
+		expand("results/deduplication/bwameth/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sambamba_dedup_coord.bam", units=units.itertuples()),
+		expand("results/deduplication/bsmap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sambamba_dedup_coord.bam", units=units.itertuples()),
+		expand("results/deduplication/gsnap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sambamba_dedup_coord.bam", units=units.itertuples()),
+		expand("results/deduplication/bsseeker2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sambamba_dedup_coord.bam", units=units.itertuples()),
+		expand("results/deduplication/gem3/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sambamba_dedup_coord.bam", units=units.itertuples()),
+		expand("results/deduplication/bismark_bwt2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sambamba_dedup_coord.bam", units=units.itertuples()),
+		expand("results/deduplication/bismark_bwt1/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_sambamba_dedup_coord.bam", units=units.itertuples()),
+		expand("results/deduplication/bwameth/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup_samb_select.bam", units=units.itertuples()),
+		expand("results/deduplication/bsmap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup_samb_select.bam", units=units.itertuples()),
+		expand("results/deduplication/gsnap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup_samb_select.bam", units=units.itertuples()),
+		expand("results/deduplication/bsseeker2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup_samb_select.bam", units=units.itertuples()),
+		expand("results/deduplication/gem3/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup_samb_select.bam", units=units.itertuples()),
+		expand("results/deduplication/bismark_bwt2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup_samb_select.bam", units=units.itertuples()),
+		expand("results/deduplication/bismark_bwt1/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup_samb_select.bam", units=units.itertuples()),
+		expand("results/methyl_info/bismark_bwt1/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup_samb_select.cytosine_report.txt", units=units.itertuples()),
+		expand("results/methyl_info/bismark_bwt2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup_samb_select.cytosine_report.txt", units=units.itertuples()),
+		expand("results/methyl_info/gem3/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup_samb_select.cytosine_report.txt", units=units.itertuples()),
+		expand("results/methyl_info/bsseeker2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup_samb_select.cytosine_report.txt", units=units.itertuples()),
+		expand("results/methyl_info/gsnap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup_samb_select.cytosine_report.txt", units=units.itertuples()),
+		expand("results/methyl_info/bsmap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup_samb_select.cytosine_report.txt", units=units.itertuples()),
+		expand("results/methyl_info/bwameth/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup_samb_select.cytosine_report.txt", units=units.itertuples()),
+		expand("results/methyl_info/bismark_bwt1/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup.cytosine_report_chr.txt", units=units.itertuples()),
+		expand("results/methyl_info/bismark_bwt2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup.cytosine_report_chr.txt", units=units.itertuples()),
+		expand("results/methyl_info/gem3/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup.cytosine_report_chr.txt", units=units.itertuples()),
+		expand("results/methyl_info/bsseeker2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup.cytosine_report_chr.txt", units=units.itertuples()),
+		expand("results/methyl_info/gsnap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup.cytosine_report_chr.txt", units=units.itertuples()),
+		expand("results/methyl_info/bsmap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup.cytosine_report_chr.txt", units=units.itertuples()),
+		expand("results/methyl_info/bwameth/trim_galore/trim_galore_params1/{units.species}/{units.sample}/{units.sample}_dedup.cytosine_report_chr.txt", units=units.itertuples())
+
+#		expand("results/quality/qualimap/bwameth/trim_galore/trim_galore_params1/{units.species}/{units.sample}/qualimapReport.html", units=units.itertuples()),
+#		expand("results/quality/qualimap/bsmap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/qualimapReport.html", units=units.itertuples()),
+#		expand("results/quality/qualimap/gsnap/trim_galore/trim_galore_params1/{units.species}/{units.sample}/qualimapReport.html", units=units.itertuples()),
+#		expand("results/quality/qualimap/bsseeker2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/qualimapReport.html", units=units.itertuples()),
+#		expand("results/quality/qualimap/gem3/trim_galore/trim_galore_params1/{units.species}/{units.sample}/qualimapReport.html", units=units.itertuples()),
+#		expand("results/quality/qualimap/bismark_bwt2/trim_galore/trim_galore_params1/{units.species}/{units.sample}/qualimapReport.html", units=units.itertuples()),
+#		expand("results/quality/qualimap/bismark_bwt1/trim_galore/trim_galore_params1/{units.species}/{units.sample}/qualimapReport.html", units=units.itertuples())
+
+
+##### include rules ##### 
+include: "rules/fastqc.smk"
+include: "rules/trim_galore_pe.smk"
+include: "rules/fastqc_trimmed.smk"
+include: "rules/bismark_mapping_bwt2.smk"
+include: "rules/bismark_mapping.smk"
+include: "rules/bwameth.smk"
+include: "rules/gem3.smk"
+include: "rules/bsseeker2.smk"
+include: "rules/bsmap.smk"
+include: "rules/gsnap.smk"
+include: "rules/samtools_sort_bismark_bwt1.smk"
+include: "rules/samtools_sort_bismark_bwt2.smk"
+include: "rules/samtools_sort_gem3.smk"
+include: "rules/samtools_sort_bsseeker2.smk"
+include: "rules/samtools_sort_gsnap.smk"
+include: "rules/samtools_sort_bsmap.smk"
+include: "rules/samtools_sort_bwameth.smk"
+include: "rules/samtools_sort_dedupl_qualimap.smk"
+include: "rules/sambamba.smk"
+include: "rules/samtools_sort_samb_coord.smk"
+include: "rules/samtools_select_chr.smk"
+include: "rules/methyldackel.smk"
+include: "rules/add_chr.smk"
