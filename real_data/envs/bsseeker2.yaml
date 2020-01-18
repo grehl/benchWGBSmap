@@ -1,0 +1,9 @@
+
+
+
+
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - bs-seeker=2.1.5

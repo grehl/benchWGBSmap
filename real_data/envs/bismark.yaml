@@ -1,0 +1,9 @@
+
+
+
+
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - bismark=0.19.1

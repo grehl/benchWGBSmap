@@ -1,0 +1,8 @@
+
+
+
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - sambamba=0.7.1

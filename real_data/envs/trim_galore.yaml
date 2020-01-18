@@ -1,0 +1,8 @@
+
+
+
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - trim-galore=0.6.2
