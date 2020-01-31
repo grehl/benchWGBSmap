@@ -1,0 +1,165 @@
+# MINIMUM CIRCOS CONFIGURATION 
+#
+# The 'hello world' Circos tutorial. Only required
+# configuration elements are included.
+#
+# Common optional elements are commented out.
+
+# Defines unit length for ideogram and tick spacing, referenced
+# using "u" prefix, e.g. 10u
+#chromosomes_units           = 1000000
+
+# Show all chromosomes in karyotype file. By default, this is
+# true. If you want to explicitly specify which chromosomes
+# to draw, set this to 'no' and use the 'chromosomes' parameter.
+# chromosomes_display_default = yes
+
+# Chromosome name, size and color definition
+karyotype = /scratch/user/src/benchmarkWGBS/real_data/results/circos/karyotype_gly.txt
+
+# The chromosomes_unit value is used as a unit (suffix "u") to shorten
+# values in other parts of the configuration file. Some parameters,
+# such as ideogram and tick spacing, accept "u" suffixes, so instead of
+#
+# spacing = 10000000
+#
+# you can write
+#
+# spacing = 10u
+#
+# See ticks.conf for examples.
+
+chromosomes_units = 1000000
+
+<<include ideogram.conf>>
+
+<<include ticks.conf>>
+
+<plots>
+
+<plot>
+
+show  = yes
+type  = heatmap
+file  = /scratch/user/src/benchmarkWGBS/real_data/results/circos/data/bisbwt2.txt
+r1    = 0.90r
+r0    = 0.95r
+scale_log_base   = 1
+#max   = 1.0
+#min   = 0.0
+
+glyph            = rectangle
+glyph_size       = 8
+color            = rdbu-5-div
+stroke_thickness = 1
+#stroke_color     = dred
+
+</plot>
+<plot>
+
+show  = yes
+type  = heatmap
+file  = /scratch/user/src/benchmarkWGBS/real_data/results/circos/data/bwameth.txt
+r1    = 0.83r
+r0    = 0.88r
+scale_log_base   = 1
+#max   = 1.0
+#min   = 0.0
+
+glyph            = rectangle
+glyph_size       = 8
+color            = rdbu-5-div
+stroke_thickness = 1
+#stroke_color     = dred
+
+</plot>
+
+<plot>
+
+show  = yes
+type  = heatmap
+file  = /scratch/user/src/benchmarkWGBS/real_data/results/circos/data/gem3.txt
+r1    = 0.76r
+r0    = 0.81r
+scale_log_base   = 1
+#max   = 1.0
+#min   = 0.0
+
+glyph            = rectangle
+glyph_size       = 8
+color            = rdbu-5-div
+stroke_thickness = 1
+#stroke_color     = dred
+
+</plot>
+
+<plot>
+
+show  = yes
+type  = heatmap
+file  = /scratch/user/src/benchmarkWGBS/real_data/results/circos/data/bisbwt1.txt
+r1    = 0.69r
+r0    = 0.74r
+scale_log_base   = 1
+#max   = 1.0
+#min   = 0.0
+
+glyph            = rectangle
+glyph_size       = 8
+color            = rdbu-5-div
+stroke_thickness = 1
+#stroke_color     = dred
+
+</plot>
+<plot>
+
+show  = yes
+type  = heatmap
+file  = /scratch/user/src/benchmarkWGBS/real_data/results/circos/data/gsnap.txt
+r1    = 0.62r
+r0    = 0.67r
+scale_log_base   = 1
+#max   = 1.0
+#min   = 0.0
+
+glyph            = rectangle
+glyph_size       = 8
+color            = rdbu-5-div
+stroke_thickness = 1
+#stroke_color     = dred
+
+</plot>
+
+<plot>
+
+show  = yes
+type  = heatmap
+file  = /scratch/user/src/benchmarkWGBS/real_data/results/circos/data/bsmap.txt
+r1    = 0.55r
+r0    = 0.60r
+scale_log_base   = 1
+#max   = 1.0
+#min   = 0.0
+
+glyph            = rectangle
+glyph_size       = 8
+color            = rdbu-5-div
+stroke_thickness = 1
+#stroke_color     = dred
+
+</plot>
+
+
+
+
+
+</plots>
+
+
+<image>
+<<include etc/image.conf>>                
+</image>
+
+<<include etc/colors_fonts_patterns.conf>> 
+
+<<include etc/housekeeping.conf>> 
